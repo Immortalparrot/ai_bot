@@ -22,8 +22,8 @@ with open(PATH + 'trained_model_LR.pkl', 'rb') as f:
 
 
 # # тяжесть симптомов
-# пока не использовал
-# SEVERITY = pd.read_csv(PATH + 'my_Symptom_severity.csv', index_col='Symptom')
+
+SEVERITY = pd.read_csv(PATH + 'my_Symptom_severity.csv', index_col='Symptom')
 
 
 # описание болезни
