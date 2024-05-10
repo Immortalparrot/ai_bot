@@ -42,13 +42,6 @@ async def process_run_diagnostics_command(message: Message):
         )
 
 
-    # await message.answer(text=LEXICON['/start_2'],
-    #                      reply_markup=start_kb)
-
-
-    # if message.from_user.id not in users_db:
-    #     users_db[message.from_user.id] = deepcopy(user_dict_template)
-
 
 # Этот хэндлер будет срабатывать на команду "/help"
 # и отправлять пользователю сообщение со списком доступных команд в боте
@@ -104,14 +97,6 @@ async def process_return_to_symptoms_press(callback: CallbackQuery):
         text=text, reply_markup=create_symptoms_keyboard(*symptoms)
         )
 
-# # Этот хэндлер будет срабатывать
-# # на апдейт типа CallbackQuery с кнопки 'show_symptoms'
-# @router.callback_query(Text(text=['show_symptoms']))
-# async def process_show_symptoms_press(callback: CallbackQuery):
-#     text = show_symptoms_f(callback)
-#     await callback.message.edit_text(
-#         text=text, reply_markup=edit_show_symptoms_kb
-#         )
 
 
 # Этот хэндлер будет срабатывать
@@ -138,14 +123,6 @@ async def process_any_disease_press(callback: CallbackQuery):
         )
 
 
-# # Этот хэндлер будет срабатывать на апдейт кнопки  CallbackQuery
-# # с любой кнопки с any_func
-# @router.callback_query(Text(text=['any_func']))
-# async def process_any_func_press(callback: CallbackQuery):
-#     text = f'pressed  { callback.data } .' +\
-#         '\n можно вставить доп функционал.\n'
-#     await callback.answer(text=text, show_alert=True)
-
 
 # Этот хэндлер будет срабатывать на апдейт типа CallbackQuery
 # скнопки 'get_diagnosis'
@@ -157,51 +134,6 @@ async def process_get_diagnostics_press(callback: CallbackQuery):
             text=text, reply_markup=create_diagnosis_keyboard(*diagnoses)
             )
 
-# # Этот хэндлер будет срабатывать на апдейт типа CallbackQuery
-# # скнопки 'alternative_diagnoses'
-# @router.callback_query(Text(text=['alternative_diagnoses']))
-# async def process_get_diagnostics_press(callback: CallbackQuery):
-#     text = alternative_diagnoses_f(callback)
-#     await callback.message.edit_text(
-#             text=text, reply_markup=edit_alternative_diagnoses_kb
-#             )
-
-
-
-
-##################################################################
-########## этот хэндлер работает для оценки бота
-# # Этот хэндлер будет срабатывать на апдейт типа CallbackQuery
-# # скнопки 'assessment'
-# @router.callback_query(Text(text=['assessment']))
-# async def process_assessment_press(callback: CallbackQuery):
-#     text = " Оцените  бота. \n Так же Вы можете отправить текстовый " +\
-#         "отзыв и предложения по улучшению бота в сообщении со словом feedback " +\
-#         "вначале сообщения.\n Заранее спасибо . \n " +\
-#         "Примеры  : \n feedback Хорошо бы добавить " +\
-#         "мультиязычность\n feedback  идея - шлак. \n feedback  идея - норм "
-#     await callback.message.edit_text(
-#             text=text, reply_markup=edit_assessment_keyboard()
-#             )
-
-
-# # Этот хэндлер будет срабатывать
-# # на апдейт типа CallbackQuery с любой кнопки с оценкой
-# @router.callback_query(Text(text=[f'score_{i}' for i in range(6)]))
-# async def process_score_press(callback: CallbackQuery):
-#     with open('score.txt', 'a') as f:
-#         f.write(f"\n id {callback.from_user.id}\n \
-#                 las_name  {callback.from_user.last_name}\n\
-#                 first_name {callback.from_user.first_name}\n \
-#                 username {callback.from_user.username} \n")
-#         #print ('**************', callback.message.date)
-#         f.write(f"date     {callback.message.date}\n")
-#         f.write(callback.data + '\n **********')
-#     await callback.answer(text=f'Ваша оценка {callback.data[-1]} принята. Спасибо.', show_alert=True)
-
-# не нужный фильтр наверное
-# def my_filter(message=Message):
-#     return message.text[:8].lower() == 'feedback'
 
 # Этот хэндлер будет срабатывать на текст feedback
 @router.message(F.text.startswith('feedback'))
